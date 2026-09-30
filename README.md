@@ -14,9 +14,10 @@ This project builds the platform that fixes that: automated incremental ingestio
 
 ## Architecture
 
-```
-MySQL (source) → CSV export → ADLS Gen2 (landing zone) → Bronze (raw, append-only) → Silver (cleaned, deduplicated, conformed) → Gold (business logic, star schema, aggregates) → Power BI (dashboards)
-```
+
+<img width="8107" height="3420" alt="project_architecture" src="https://github.com/user-attachments/assets/937f9112-53e5-40e4-9fba-821eac5756f6" />
+
+
 
 Governed end-to-end through **Unity Catalog**, orchestrated and scheduled through **Databricks Workflows**.
 
@@ -69,7 +70,12 @@ Governed end-to-end through **Unity Catalog**, orchestrated and scheduled throug
 - Star-schema Gold tables (products joined to brand/category, customers joined to region) and a rolling daily summary aggregate table.
 - Unity Catalog setup: catalog, schemas, and an external volume backed by ADLS, with the Databricks Access Connector for secure storage access.
 - End-to-end **orchestration**: multi-task Databricks Jobs with dependency chains, nested "run job" tasks, nightly cron scheduling, and failure/success email notifications.
-- Power BI dashboard surfacing total sales, repeat customer rate, sales by brand/category, customer distribution by region, channel split, and monthly revenue trend.
+
+## Dashboard
+
+<img width="1292" height="718" alt="ecommerce_analytics_report" src="https://github.com/user-attachments/assets/69fda1b5-d004-4340-a42e-d56cc0aa4491" />
+
+Power BI dashboard surfacing total sales, repeat customer rate, sales by brand/category, customer distribution by region, channel split, and monthly revenue trend.
 
 ---
 
